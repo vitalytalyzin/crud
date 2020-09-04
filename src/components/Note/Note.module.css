@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 200px;
+}
+
+.note {
+  flex: auto;
+  border: 1px solid black;
+  overflow-y: auto
+}
+
+.button {
+  margin-top: 16px;
+}
