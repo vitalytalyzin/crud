@@ -15,14 +15,14 @@ class App extends Component {
       .then(notes => this.setState({ notes }));
   };
 
-  sendNote = (note) => {
+  sendNote = async (note) => {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: 0, content: note })
+      body: JSON.stringify({ id: 0, content: note }),
     };
 
-    fetch(process.env.REACT_APP_NOTES_URL, requestOptions)
+    await fetch(process.env.REACT_APP_NOTES_URL, requestOptions);
     this.loadNotes();
   };
 
