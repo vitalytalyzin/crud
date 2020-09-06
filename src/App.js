@@ -26,6 +26,13 @@ class App extends Component {
     this.loadNotes();
   };
 
+  deleteNote = async (id) => {
+    await fetch(`${process.env.REACT_APP_NOTES_URL}/${id}`, {
+      method: 'DELETE',
+    });
+    this.loadNotes();
+  };
+
   componentDidMount() {
     this.loadNotes();
   }
@@ -34,19 +41,29 @@ class App extends Component {
     const { notes } = this.state;
 
     return (
-      <div>
-        <h1>Notes</h1>
+      <>
+        <div className="header">
+          <h1>Notes</h1>
+          <button
+            className="refreshButton"
+            onClick={this.loadNotes}
+          >Refresh</button>
+        </div>
         {notes.length > 0 && (
           <div className="noteSection">
             {notes.map(item => (
-              <Note key={item.id} note={item.content} />
+              <Note
+                key={item.id}
+                note={item.content}
+                onRemove={() => this.deleteNote(item.id)}
+              />
             ))}
           </div>
         )}
         <NoteForm
           onNoteAdded={this.sendNote}
         />
-      </div>
+      </>
     );
   }
 }

@@ -1,3 +1,14 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.refreshButton {
+  width: 200px;
+  height: 30px;
+  margin-left: 16px;
+}
+
 .noteSection {
   display: flex;
   margin-bottom: 16px;
